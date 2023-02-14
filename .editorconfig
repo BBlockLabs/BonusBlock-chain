@@ -1,0 +1,15 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_size = 4
+charset = utf-8
+indent_style = space
+
+[Makefile]
+indent_size = 2
+
+[*.{js,jsx,ts,json,vue,html,css,scss}]
+indent_size = 2

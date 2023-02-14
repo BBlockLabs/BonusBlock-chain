@@ -1,0 +1,16 @@
+accounts:
+  - name: alice
+    coins: ["20000ubonus"]
+  - name: bob
+    coins: ["10000ubonus"]
+validator:
+  name: alice
+  staked: "100000000ubonus"
+client:
+  openapi:
+    path: "docs/static/openapi.yml"
+  vuex:
+    path: "vue/src/store"
+faucet:
+  name: bob
+  coins: ["100000ubonus"]
