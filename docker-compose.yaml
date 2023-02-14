@@ -1,13 +1,12 @@
 version: "3.9"
 services:
   node1:
-# to run with local changes change replace image with build
-#    build:
-#      context: .
-#      args:
-#        CHAIN_ID: local-testnet
-    image: nexus.internal.altermail.live:8082/alter/bonus-block
-#    entrypoint: ""
+    # to run with local changes change replace image with build
+    build:
+      context: .
+      args:
+        CHAIN_ID: local-testnet
+    # image: nexus.internal.altermail.live:8082/alter/bonus-block
     command: /bin/sh -c "if [ -z $${MONIKER##*-0} ]; then START_WITHOUT_SEEDS=true; fi; /opt/entrypoint.sh"
     environment:
       - MONIKER=node-0

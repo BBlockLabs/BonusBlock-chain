@@ -3,12 +3,17 @@
 MONIKER=${MONIKER:-node001}
 CHAIN_ID=${CHAIN_ID:-bonusblock}
 SEEDS=${SEEDS}
-FEE=${FEE:-ualtr}
-STARTING_AMOUNT=${STARTING_AMOUNT:-1000000000}
-STARTING_STAKE=${STARTING_STAKE:-333333333}
+FEE=${FEE:-ubonus}
+STARTING_AMOUNT=${STARTING_AMOUNT:-2000000000000000}
+STARTING_STAKE=${STARTING_STAKE:-1000000000}
 CLEAR=${CLEAR}
 START_WITHOUT_SEEDS=${START_WITHOUT_SEEDS}
-DIR="/root/.bonus-block/config/"
+DIR="/root/.bonusblock/config/"
+
+echo aa
+echo $START_WITHOUT_SEEDS;
+echo bb
+echo $MONIKER;
 
 # Coma separate the seed list
 SEED_LIST=`echo $SEEDS | sed 's/,/\n/g'`
@@ -17,13 +22,13 @@ SEED_LIST=`echo $SEEDS | sed 's/,/\n/g'`
 if [ ! -d "$DIR" ] || [ ! -z "$CLEAR" ]; then
     if [ ! -z "$CLEAR" ] && echo "clear variable set"; then
         echo "Clearing old chain configuration"
-        rm ~/.bonus-block -R
+        rm ~/.bonusblock -R
     fi
 
     echo "Init chain"
     bonus-blockd init --chain-id "$CHAIN_ID" "$MONIKER"
 
-    sed -i -r '/\[rpc\]/,/laddr ?= ?.*/ s/^laddr ?= ?.*/laddr = \"tcp:\/\/0\.0\.0\.0:26657\"/' ~/.bonus-block/config/config.toml
+    sed -i -r '/\[rpc\]/,/laddr ?= ?.*/ s/^laddr ?= ?.*/laddr = \"tcp:\/\/0\.0\.0\.0:26657\"/' ~/.bonusblock/config/config.toml
 
     if ! bonus-blockd keys list | grep validator && echo "validator not found"; then
         echo "add validator account - copy mnemonic"
@@ -34,7 +39,7 @@ if [ ! -d "$DIR" ] || [ ! -z "$CLEAR" ]; then
     if [ ! -z "$START_WITHOUT_SEEDS" ]; then
         echo "Staring new chain"
 
-        sed -i -r 's/stake/'"$FEE"'/g'  ~/.bonus-block/config/genesis.json
+        sed -i -r 's/stake/'"$FEE"'/g'  ~/.bonusblock/config/genesis.json
 
         echo "Adding genesis account"
         bonus-blockd add-genesis-account validator $STARTING_AMOUNT$FEE --keyring-backend test
@@ -47,7 +52,7 @@ if [ ! -d "$DIR" ] || [ ! -z "$CLEAR" ]; then
         echo "Staring chain from genesis seeders $SEEDS"
 
         echo "Remove generated genesis"
-        rm ~/.bonus-block/config/genesis.json
+        rm ~/.bonusblock/config/genesis.json
 
         echo "Waiting for genesis to be downloadable"
         until [ ! -z "$GENESIS_URL" ]
@@ -69,7 +74,7 @@ if [ ! -d "$DIR" ] || [ ! -z "$CLEAR" ]; then
         done
 
         echo "Downloading genesis file from http://$GENESIS_URL:26657/genesis?"
-        curl http://$GENESIS_URL:26657/genesis? | jq '.result.genesis' > ~/.bonus-block/config/genesis.json
+        curl http://$GENESIS_URL:26657/genesis? | jq '.result.genesis' > ~/.bonusblock/config/genesis.json
     fi
 
     echo "Validating genesis file"
@@ -104,5 +109,5 @@ done
 
 if [ ! -z "$SEEDERS" ]; then
     echo "Adding $SEEDERS to seeders"
-    sed -i -r 's/^seeds ?= ?.*/seeds = \"'$SEEDERS'\"/' ~/.bonus-block/config/config.toml
+    sed -i -r 's/^seeds ?= ?.*/seeds = \"'$SEEDERS'\"/' ~/.bonusblock/config/config.toml
 fi

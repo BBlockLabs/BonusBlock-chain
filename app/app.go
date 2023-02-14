@@ -105,8 +105,8 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "host"
-	Name                 = "host"
+	AccountAddressPrefix = "bonus"
+	Name = "bonusblock"
 )
 
 // this line is used by starport scaffolding # stargate/wasm/app/enabledProposals

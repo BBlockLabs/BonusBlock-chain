@@ -16,16 +16,19 @@ COPY . /code/
 RUN cp /lib/libwasmvm_muslc.${arch}.a /lib/libwasmvm_muslc.a
 
 RUN LEDGER_ENABLED=false BUILD_TAGS=muslc LINK_STATICALLY=true make build
+
+RUN ls -la /code/
+RUN ls -la /code/build
+
 RUN echo "Ensuring binary is statically linked ..." \
   && (file /code/build/bonus-blockd | grep "statically linked")
-
 
 FROM alpine:3.15
 ARG MONIKER=node001
 ARG CHAIN_ID=bonusblock
-ARG FEE=ualtr
-ARG STARTING_AMOUNT=100000000000000
-ARG STARTING_STAKE=10000000000
+ARG FEE=ubonus
+ARG STARTING_AMOUNT=2000000000000000
+ARG STARTING_STAKE=1000000000
 ARG SEEDS
 ARG START_WITHOUT_SEEDS
 
