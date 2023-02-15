@@ -27,10 +27,10 @@ bonus-blockd init [node name] --chain-id=blocktopia-01
 
 ```bash
 rm ~/.bonusblock/config/genesis.json
-curl http://office.altermail.lv:26657/genesis? | jq '.result.genesis' > ~/.bonusblock/config/genesis.json
+curl https://bonusblock-testnet.alter.network/genesis? | jq '.result.genesis' > ~/.bonusblock/config/genesis.json
 ```
 
-3. Add seed node in `~/.bonusblock/config/config.toml` -> `e5e04918240cfe63e20059a8abcbe62f7eb05036@office.altermail.lv:26656`
+3. Add seed node in `~/.bonusblock/config/config.toml` -> `e5e04918240cfe63e20059a8abcbe62f7eb05036@bonusblock-testnet-p2p.alter.network:26656`
 
 4. start the node
 
