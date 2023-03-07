@@ -27,6 +27,7 @@ bonus-blockd init [node name] --chain-id=blocktopia-01
 rm ~/.bonusblock/config/genesis.json
 curl https://bonusblock-testnet.alter.network/genesis? | jq '.result.genesis' > ~/.bonusblock/config/genesis.json
 ```
+Or copy it from the github repository
 
 3. Add seed node in `~/.bonusblock/config/config.toml` -> `e5e04918240cfe63e20059a8abcbe62f7eb05036@bonusblock-testnet-p2p.alter.network:26656`
 
