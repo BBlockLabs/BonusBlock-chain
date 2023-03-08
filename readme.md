@@ -51,7 +51,7 @@ bonus-blockd keys add [user]
 ```
 You will be given the mnemonic of the new user
 
-6. Add tokens to your account from the faucet - https://bonusblock-faucet.alter.network/
+6. Add tokens to your account from the faucet - https://faucet.bonusblock.io/
 
 7. Upgrade your node to a validator
 ```bash
