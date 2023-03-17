@@ -77,7 +77,7 @@ build: go.sum
 ifeq ($(OS),Windows_NT)
 	exit 1
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o build/bonus-blockd ./cmd/bonus-blockd
+	go build -mod=readonly $(BUILD_FLAGS) -o ~/go/bin/bonus-blockd ./cmd/bonus-blockd
 endif
 
 
