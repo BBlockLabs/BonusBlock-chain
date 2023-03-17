@@ -1,0 +1,54 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+@import 'tailwindcss/base';
+@import './resets.css';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+    html {
+        @apply font-sans font-normal text-base;
+    }
+
+    body {
+        @apply bg-white text-dark-blue dark:bg-black dark:text-white overflow-auto;
+    }
+
+    #__docusaurus {
+        /* @apply container; */
+    }
+
+    a {
+        @apply no-underline text-black-warm underline hover:text-yellow dark:text-white dark:hover:text-yellow;
+    }
+
+    ::selection {
+        @apply bg-yellow text-white;
+    }
+
+    a.external {
+        position: relative;
+        padding-right: 1em;
+    }
+
+    a.external:after {
+        content: '\2197';
+        /* position: absolute; */
+        bottom: 0.166em;
+        right: 0;
+        font-size: 0.85em;
+        line-height: 1;
+    }
+}
+
+
+.theme-doc-sidebar-container > div {
+    margin-top: 5.75rem;
+}
+
+
+main ul {
+    list-style: revert;
+    margin: revert;
+    padding: 1rem;
+}
