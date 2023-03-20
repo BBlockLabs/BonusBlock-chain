@@ -16,6 +16,7 @@ const Card = ({name, description, icon, img, to, className}) => (
                     <div className="flex items-center space-x-2">
                         {icon && <span className={clsx(icon, 'flex items-center justify-center text-2xl text-yellow')}>&nbsp;</span>}
                         <b>{name}</b>
+                        <div>Yeet</div>
                     </div>
                     {description && <div className="flex-1">{description}</div>}
                 </div>
