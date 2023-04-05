@@ -10,11 +10,6 @@ CLEAR=${CLEAR}
 START_WITHOUT_SEEDS=${START_WITHOUT_SEEDS}
 DIR="/root/.bonusblock/config/"
 
-echo aa
-echo $START_WITHOUT_SEEDS;
-echo bb
-echo $MONIKER;
-
 # Coma separate the seed list
 SEED_LIST=`echo $SEEDS | sed 's/,/\n/g'`
 
